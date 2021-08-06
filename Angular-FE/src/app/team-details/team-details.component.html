@@ -1,0 +1,38 @@
+
+<div *ngIf="team">
+  <button id="edit"(click)="EditClicked()">Edit</button>
+  <button (click)="AddMemberClicked()">Add Member</button>
+  <button (click)="Deleteteam()" style="background-color: red;">Delete</button>
+  <ul *ngIf="showMember" class="search-result">
+    <li *ngFor="let employee of employees">
+      <a (click)="addMember(employee.id, team.id)">
+        {{employee.name}}
+      </a>
+    </li>
+  </ul>
+
+
+  <div class='details'>
+    <h1>{{team.teamName}}</h1>
+    <ol style="list-style-type:none">
+      <li>ID: {{team.id}}</li> 
+      <li>Member:
+        <ol class="member-list" *ngFor="let member of team.members">
+          <li>{{member}}</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+  <div *ngIf="EditBtn" >
+    <ol style="list-style-type:none">
+      <li>
+        <label for="new-employee">team Name: </label>
+        <input id="new-employee" type="text" #teamName value={{team.teamName}}/>
+      </li>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="update-button" 
+      (click)="Updateteam(team, teamName.value)">Update!</button>
+    </ol>
+  </div>
+</div>

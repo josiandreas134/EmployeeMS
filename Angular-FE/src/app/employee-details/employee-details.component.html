@@ -1,0 +1,40 @@
+<div class="employee-detail" *ngIf="employee">
+  <button (click)="EditClicked()">Edit</button>
+  <button (click)="AddtoTeamClicked()">Add to Team</button>
+  <button (click)="DeleteClicked()" style="background-color: red;">Delete</button>  
+
+
+  <div class='details'>
+    <img src="assets/logo.png " alt="profilepic">
+    <ol style="list-style-type:none">
+      <li>ID: {{employee.id}}</li> 
+      <li>Employee Name: {{employee.name}}</li>
+      <li>Phone Number: {{employee.phoneNo}} </li>
+      <li>Position: {{employee.position}}</li>
+    </ol>
+    
+  </div>
+  
+
+<div *ngIf="EditBtn">
+  <ol style="list-style-type:none">
+    <li>
+      <label for="new-employee">Employee Name: </label>
+      <input id="new-employee" type="text" #employeeName value={{employee.name}}/>
+    </li>
+    <li>
+      <label for="new-employeePN">Phone Number: </label>
+      <input id="new-employeePN" type="text" #employeePhoneNumber value={{employee.phoneNo}}/>
+    </li>
+    <li>
+      <label for="new-employeePos">Position: </label>
+      <input id="new-employeePos" type="text" #employeePosition value={{employee.position}}/>
+    </li>
+  
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="update-button" 
+    (click)="UpdateEmployee(employee, employeeName.value, employeePhoneNumber.value, employeePosition.value)">Update!</button>
+  </ol>
+</div>
+
+</div>

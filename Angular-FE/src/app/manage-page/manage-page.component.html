@@ -1,0 +1,95 @@
+<div id="main">
+  <div class="employee-main">
+    <h1>Employee</h1>
+    <div class = "top-button">
+      <button id="add"(click)="AddButtonClick()"> Add New </button>
+      <button id="edit"(click)="EditClicked()">Edit</button>
+      <button id="delete"(click)="DeleteButtonClick()"> Delete </button>
+    </div>
+
+    <div class="body">
+      <div class="add-new" *ngIf="add">
+        <ol style="list-style-type:none">
+          <li>
+            <label for="new-employee">Employee Name: </label>
+            <input id="new-employee" type="text" #employeeName />
+          </li>
+          <li>
+            <label for="new-employeePN">Phone Number: </label>
+            <input id="new-employeePN" type="text" #employeePhoneNumber />
+          </li>
+          <li>
+            <label for="new-employeePos">Position: </label>
+            <input id="new-employeePos" type="text" #employeePosition />
+          </li>
+        
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button class="add-button" (click)="AddNewEmployee(employeeName.value, employeePhoneNumber.value, employeePosition.value);
+          employeeName.value=''; employeePhoneNumber.value=''; employeePosition.value=''">
+            Add Employee
+          </button>
+        </ol>
+      </div>
+      
+      <div class="delete" *ngIf="deletion">
+          <label for="delete-employee">Employee Name: </label>
+            <input id="delete-employee" type="text" #employeeName />
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button class="delete-button" (click)="DeleteEmployee(employeeName.value)">Delete!</button>
+      </div>
+      
+      <div class="employee-list" *ngIf="EditBtn">
+        <ol>
+          <li *ngFor="let employee of employees" style="list-style-type:none">
+            <a routerLink='/details/{{employee.id}}'>{{employee.name}}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="end">
+      <button id="reset" (click)="Reset()">Reset</button>
+    </div>
+  </div>
+
+  <div class="team-main">
+    <h1>Team</h1>
+    <div class = "top-button">
+      <button id="add"(click)="AddteamButtonClick()"> Add New </button>
+      <button id="edit"(click)="teamEditClicked()">Edit</button>
+      <button id="delete"(click)="teamDeleteButtonClick()"> Delete </button>
+    </div>
+    <div class="body">
+      <div class="add-new" *ngIf="teamadd">
+        <ol style="list-style-type:none">
+          <li>
+            <label for="new-team">Team Name: </label>
+            <input id="new-team" type="text" #teamName />
+          </li>
+        
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button class="add-button" (click)="AddNewteam(teamName.value);
+          teamName.value='';">
+            Add team
+          </button>
+        </ol>
+      </div>
+      
+      <div class="delete" *ngIf="teamdeletion">
+          <label for="delete-employee">Team Name: </label>
+            <input id="delete-employee" type="text" #employeeName />
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button class="delete-button" (click)="Deleteteam(employeeName.value)">Delete!</button>
+      </div>
+      
+      <div class="team-list" *ngIf="teamEditBtn">
+        <ol>
+          <li *ngFor="let team of teams" style="list-style-type:none">
+            <a routerLink='../teams/details/{{team.id}}'>{{team.teamName}}</a>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+
+  </div>
+</div>

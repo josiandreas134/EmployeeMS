@@ -1,0 +1,93 @@
+button { 
+    background-color:#4488c4;
+    border: #2e6da4;
+    font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border-radius: 4px;
+    line-height: 1.5;
+    text-decoration:none;
+    margin: 5px;
+
+}
+
+button:hover{
+    background-color: lavender;
+}
+
+input{
+    background-color:#eee;
+    color: black;
+    padding: 8px 12px;
+    border-style: solid;
+}
+
+
+
+div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#main {
+    border-style: double;
+}
+
+.employee-list li, .team-list li{
+    padding: 5px;
+    border-style: inset;
+    background-color:#ffffff;
+
+}
+
+
+.employee-list li:hover, .team-list li:hover{
+    padding: 5px;
+    border-style: inset;
+    background-color:#f1f4f7;
+}
+
+ol{
+    padding: 0;
+}
+
+.top-button{
+    align-content: flex-start;
+}
+
+.end{
+    align-content: flex-start;
+}
+
+.end #reset{
+    background-color: red;
+    font-weight: bold;
+    font-size: large;
+}
+
+.delete, .add-new, .employee-list, .team-list{
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+
+    border-top: solid;
+    border-bottom: solid;
+    border-width: thin;
+
+}
+
+h1{
+    margin: 0px;
+}
+
+.team-main{
+    border-top: dashed;
+    background-color: rgb(225, 228, 228);
+}
+
+a{
+    text-decoration: none;
+}
