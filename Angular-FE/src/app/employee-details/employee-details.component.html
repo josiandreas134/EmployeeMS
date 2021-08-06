@@ -2,10 +2,16 @@
   <button (click)="EditClicked()">Edit</button>
   <button (click)="AddtoTeamClicked()">Add to Team</button>
   <button (click)="DeleteClicked()" style="background-color: red;">Delete</button>  
-
+  <ul *ngIf="showteam" class="search-result">
+    <li *ngFor="let team of teams" (click)="addtoTeam(employee.id, team.id)">
+      <a>
+        {{team.teamName}}
+      </a>
+    </li>
+  </ul>
 
   <div class='details'>
-    <img src="assets/logo.png " alt="profilepic">
+    <img src="../../assets/logo.png" alt="profilepic">
     <ol style="list-style-type:none">
       <li>ID: {{employee.id}}</li> 
       <li>Employee Name: {{employee.name}}</li>

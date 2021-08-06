@@ -40,8 +40,8 @@
       
       <div class="employee-list" *ngIf="EditBtn">
         <ol>
-          <li *ngFor="let employee of employees" style="list-style-type:none">
-            <a routerLink='/details/{{employee.id}}'>{{employee.name}}</a>
+          <li *ngFor="let employee of employees" style="list-style-type:none"  routerLink='/details/{{employee.id}}'>
+            <a>{{employee.name}}</a>
           </li>
         </ol>
       </div>
@@ -83,8 +83,8 @@
       
       <div class="team-list" *ngIf="teamEditBtn">
         <ol>
-          <li *ngFor="let team of teams" style="list-style-type:none">
-            <a routerLink='../teams/details/{{team.id}}'>{{team.teamName}}</a>
+          <li *ngFor="let team of teams" style="list-style-type:none"  routerLink='../teams/details/{{team.id}}'>
+            <a>{{team.teamName}}</a>
           </li>
         </ol>
       </div>

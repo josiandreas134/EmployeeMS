@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../team.service';
-import { Team } from '../Team';
+import { Component, OnInit } from '@angular/core'
+import { TeamService } from '../team.service'
+import { Team } from '../Team'
 
 @Component({
   selector: 'app-teams',
@@ -10,21 +10,19 @@ import { Team } from '../Team';
 export class TeamsComponent implements OnInit {
   team: Team | undefined;
   teams: Team[] = [];
-  constructor(
-    private teamService: TeamService,
-    ) { }
+  constructor (
+    private teamService: TeamService
+  ) { }
 
-  ngOnInit() {
-    this.getteams();
+  ngOnInit () {
+    this.getteams()
   }
 
-  getteams(): void {
+  getteams (): void {
     this.teamService.getteams().subscribe(teams => this.teams = teams)
   }
 
-  getteam(id: number): void {
-    this.teamService.getteam(id).subscribe(team => this.team = team);
+  getteam (id: number): void {
+    this.teamService.getteam(id).subscribe(team => this.team = team)
   }
-
 }
-

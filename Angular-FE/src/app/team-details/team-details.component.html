@@ -2,11 +2,21 @@
 <div *ngIf="team">
   <button id="edit"(click)="EditClicked()">Edit</button>
   <button (click)="AddMemberClicked()">Add Member</button>
+  <button (click)="RemoveMemberClicked()">Remove Member</button>
   <button (click)="Deleteteam()" style="background-color: red;">Delete</button>
-  <ul *ngIf="showMember" class="search-result">
-    <li *ngFor="let employee of employees">
-      <a (click)="addMember(employee.id, team.id)">
+  
+  <ul *ngIf="showEmployee" class="search-result">
+    <li *ngFor="let employee of employees" (click)="addMember(employee.id, team.id)">
+      <a>
         {{employee.name}}
+      </a>
+    </li>
+  </ul>
+
+  <ul *ngIf="showMember" class="search-result">
+    <li *ngFor="let member of members" (click)="removeMember(member.id)">
+      <a>
+        {{member.name}}
       </a>
     </li>
   </ul>

@@ -7,6 +7,8 @@ import com.example.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,6 +27,19 @@ public class TeamController {
     @GetMapping(path="/spring/team/{id}")
     public @ResponseBody Team getTeam(@PathVariable long id) {
         return teamRepository.findById(id);
+    }
+
+    @GetMapping(path="/spring/team/{id}/members")
+    public @ResponseBody Iterable<Employee> getMembers(@PathVariable long id) {
+        Team team = teamRepository.findById(id);
+        Iterable<Employee> employees = employeeRepository.findAll();
+        ArrayList<Employee> members = new ArrayList<Employee>();
+        for(Employee employee: employees){
+            if(employee.getBelongsToTeam().contains(team)){
+                members.add(employee);
+            }
+        }
+        return members;
     }
 
     @RequestMapping(value="/spring/team/del{id}", method = {RequestMethod.DELETE})
@@ -56,6 +71,15 @@ public class TeamController {
         Team team = getTeam(team_id);
         Employee employee = employeeRepository.findById(employee_id);
         employee.getBelongsToTeam().add(team);
+        employeeRepository.save(employee);
+        return team;
+    }
+
+    @RequestMapping(value="/spring/team/remove{team_id}", method = {RequestMethod.POST})
+    public @ResponseBody Team removeMember(int employee_id, @PathVariable int team_id){
+        Team team = getTeam(team_id);
+        Employee employee = employeeRepository.findById(employee_id);
+        employee.getBelongsToTeam().remove(team);
         employeeRepository.save(employee);
         return team;
     }
